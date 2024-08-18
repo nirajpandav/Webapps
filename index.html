@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            padding-top: 10%;
+            background-image: url(./bg.jpg);
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        .container .element{
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            box-shadow: 1px;
+            border-radius: 2%;
+            box-shadow: 2px 2px 2px;
+            
+        }
+        .notes{
+            text-align: center;
+            vertical-align: middle;
+            line-height: 300px;
+            /* margin-top: 50%;
+            margin-left: 50%; */
+            font-size: xx-large;
+            font-family: cursive;
+        }
+    </style>
+</head>
+<body onload="move('element')">
+    <div class="container">
+        <div class="element" style="background-color: #fe78bf; z-index: 10; rotate: 1deg"><p class="notes" >One </p></div>
+        <div class="element" style="background-color: #fe78bf; z-index: 9; rotate: 2deg"><p class="notes" >Two </p></div>
+        <div class="element" style="background-color: #fe78bf; z-index: 8; rotate: 3deg"><p class="notes" >Three </p></div>
+        <div class="element" style="background-color: #fe78bf; z-index: 7; rotate: 4deg"><p class="notes" >Four </p></div>
+        <div class="element" style="background-color: #fe78bf; z-index: 6; rotate: 5deg"><p class="notes" >Five</p></div>
+        <div class="element" style="background-color: #fe78bf; z-index: 5; rotate: 6deg"><p class="notes" >Six</p></div>
+        <div class="element" style="background-color: #fe78bf; z-index: 4; rotate: 7deg"><p class="notes" >Seven</p></div>
+        <div class="element" style="background-color: #fe78bf; z-index: 3; rotate: 8deg"><p class="notes" >Eight</p></div>
+        <div class="element" style="background-color: #fe78bf; z-index: 2; rotate: 9deg"><p class="notes" >Nine</p></div>
+        <div class="element" style="background-color: #fe78bf; z-index: 1; rotate: 10deg"><p class="notes" >Ten </p></div>
+        <div class="element" style="background-color: #fe78bf; z-index: 0; rotate: 11deg"><p class="notes" >Eleven</p></div>
+
+
+    </div>
+
+    <script>
+        var chooseElement;
+        const move = function(element){
+            const elements = document.querySelectorAll(".element")
+            elements.forEach(element => {
+                element.addEventListener("mousedown", () =>{
+                    element.style.position = "absolute"
+                    chooseElement = element
+
+                    document.onmousemove = (e) => {
+                        var x= e.pageX
+                        var y= e.pageY
+
+                        chooseElement.style.left = x -50 + "px"
+                        chooseElement.style.top = y -50 + "px"
+                    }
+                })
+            })
+            document.onmouseup = function(e){
+                chooseElement = null
+            }
+        }
+    </script>
+</body>
+</html>
