@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Notes</title>
+    <title>Hey Sunshine</title>
     <style>
         body, html {
             height: 100%;
             margin: 0;
+            overflow: hidden;
         }
         .container{
             display: flex;
             justify-content: center;
-            padding-top: 10%;
-            background-image: url(./bg.jpg);
+            padding-top: 11%;
+            padding-right: 35%;
+            background-image: url(./background.JPG);
             height: 100%;
             background-repeat: no-repeat;
             background-position: center;
@@ -23,39 +25,105 @@
             width: 400px;
             height: 400px;
             position: absolute;
-            box-shadow: 1px;
             border-radius: 2%;
-            box-shadow: 2px 2px 2px;
+            box-shadow: 2px 2px 2px #bcb07f;
             
         }
         .notes{
             text-align: center;
             vertical-align: middle;
-            line-height: 300px;
-            /* margin-top: 50%;
-            margin-left: 50%; */
-            font-size: xx-large;
+            line-height: 50px;
+            margin: 10%;
+            font-size: large;
             font-family: cursive;
+            -webkit-user-select: none;
+            -ms-user-select: none; 
+            user-select: none; 
         }
+        .footer {
+            width: 100%;
+            height: 50px; 
+            line-height: 50px;
+            text-align: center;  
+            background-size: 100% 100%;
+            justify-content: center;
+            
+        }
+
+.footer p {
+    color: rgb(0, 0, 0);
+    font-size: 1.25em;
+    margin-top: -300px;
+}
+#preloader{
+    background: #FFFFFF url(./preloader.gif) no-repeat center center;
+    background-size: 20%;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
+audio {
+  width: 200px;
+  height: 50px;
+}
+
+audio::-webkit-media-controls-panel {
+  -webkit-justify-content: center;
+  height: 50px;
+}
+
+
+audio::-webkit-media-controls-timeline {
+  display: none !important;
+}
+
+
+audio::-webkit-media-controls-current-time-display {
+  display: none;
+}
+audio::-webkit-media-controls-time-remaining-display {
+  display: none;
+}
     </style>
 </head>
 <body onload="move('element')">
+    <div id="preloader"></div>
     <div class="container">
-        <div class="element" style="background-color: #fe78bf; z-index: 10; rotate: 1deg"><p class="notes" >One </p></div>
-        <div class="element" style="background-color: #fe78bf; z-index: 9; rotate: 2deg"><p class="notes" >Two </p></div>
-        <div class="element" style="background-color: #fe78bf; z-index: 8; rotate: 3deg"><p class="notes" >Three </p></div>
-        <div class="element" style="background-color: #fe78bf; z-index: 7; rotate: 4deg"><p class="notes" >Four </p></div>
-        <div class="element" style="background-color: #fe78bf; z-index: 6; rotate: 5deg"><p class="notes" >Five</p></div>
-        <div class="element" style="background-color: #fe78bf; z-index: 5; rotate: 6deg"><p class="notes" >Six</p></div>
-        <div class="element" style="background-color: #fe78bf; z-index: 4; rotate: 7deg"><p class="notes" >Seven</p></div>
-        <div class="element" style="background-color: #fe78bf; z-index: 3; rotate: 8deg"><p class="notes" >Eight</p></div>
-        <div class="element" style="background-color: #fe78bf; z-index: 2; rotate: 9deg"><p class="notes" >Nine</p></div>
-        <div class="element" style="background-color: #fe78bf; z-index: 1; rotate: 10deg"><p class="notes" >Ten </p></div>
-        <div class="element" style="background-color: #fe78bf; z-index: 0; rotate: 11deg"><p class="notes" >Eleven</p></div>
+        <div class="element" style="background-color: #f8f3cd; z-index: 10; rotate: 1deg"><p class="notes" >You're My Sunshine:<br>
+            "Every day seeing you feels like a beautiful day. You bring so much light and warmth into my life, and I can't imagine a day without seeing you."</p></div>
+        <div class="element" style="background-color: #f8f3cd; z-index: 9; rotate: 2deg"><p class="notes" >My Safe Haven: <br>
+            "With you, I feel safe, loved, and cherished. You’re my peace in a chaotic world, and I'll be so grateful to have you by my side."</p></div>
+        <div class="element" style="background-color: #f8f3cd; z-index: 8; rotate: 3deg"><p class="notes" >Endless Adventure:<br>
+            "Life with you will be the greatest adventure I could ever ask for. I can't wait to explore the world with you, hand in hand." </p></div>
+        <div class="element" style="background-color: #f8f3cd; z-index: 7; rotate: 4deg"><p class="notes" >Your Smile, My Favorite Sight:<br> 
+            "Your smile is my favorite thing in the world. It brightens up my darkest days and makes everything seem possible."</p></div>
+        <div class="element" style="background-color: #f8f3cd; z-index: 6; rotate: 5deg"><p class="notes" >Always on My Mind:<br>
+            "No matter where I am or what I'm doing, thoughts of you always find their way into my mind. You make my heart race in the best way."</p></div>
+        <div class="element" style="background-color: #f8f3cd; z-index: 5; rotate: 6deg"><p class="notes" >Perfectly Imperfect:<br>
+            "You are perfect in all your imperfections, and I wouldn’t change a single thing about you. I love you just the way you are."</p></div>
+        <div class="element" style="background-color: #f8f3cd; z-index: 4; rotate: 7deg"><p class="notes" >My Greatest Gift:<br>
+            "Out of everything in life, you are the greatest gift I’ve ever received. Loving you is the best decision I've ever made."</p></div>
+        <div class="element" style="background-color: #f8f3cd; z-index: 3; rotate: 8deg"><p class="notes" >Thank You for Being You:<br>
+            "Thank you for being your amazing self. Your kindness, strength, and beauty inspire me every day to be a better person."</p></div>
+        <div class="element" style="background-color: #f8f3cd; z-index: 2; rotate: 9deg"><p class="notes" >Forever Yours:<br>
+            "I promise to love, cherish, and stand by you through all the ups and downs. My heart is yours now and forever."</p></div>
+        <div class="element" style="background-color: #f8f3cd; z-index: 1; rotate: 10deg"><p class="notes" >You Complete Me:<br>
+            "Before you, I didn't realize something was missing. Now, I know it was you all along. You complete me in ways I never thought possible."</p></div>
+        <div class="element" style="background-color: #f8f3cd; z-index: 0; rotate: 11deg"><p class="notes" >Hey Girl, I Love you with all my heart</p></div>
 
-
+        <audio id="song" controls autoplay style="margin: 400px -320px 0px 994px; rotate: 15deg; border-radius: 25px; box-shadow: 2px 2px 2px #bcb07f;">
+            <source  volume="10" src="./Song.mp3" type="audio/mpeg">
+            <p>Music?</p>
+        </audio>
     </div>
-
+        
+    <footer class="footer"><p>Made with <a style="color: red;">&#10084<a></p></footer>
+        <iframe width="0" height="0" src="https://www.youtube.com/embed/LjhCEhWiKXk?si=sbC0T4HYa90v34Ng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="0" height="0" src="https://www.youtube.com/embed/LjhCEhWiKXk?si=sbC0T4HYa90v34Ng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="0" height="0" src="https://www.youtube.com/embed/LjhCEhWiKXk?si=sbC0T4HYa90v34Ng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        
     <script>
         var chooseElement;
         const move = function(element){
@@ -78,6 +146,12 @@
                 chooseElement = null
             }
         }
+    </script>
+    <script>
+        var loader = document.getElementById("preloader")
+        window.addEventListener("load", function(){
+            loader.style.display = "none";
+        })
     </script>
 </body>
 </html>
