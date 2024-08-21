@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="author" content="Niraj Pandav">
     <link rel="icon" type="image/png" href="./src/favicon.png">
     <title>Hey Sunshine</title>
@@ -66,72 +67,132 @@
     z-index: 100;
 }
 
-audio {
-  width: 200px;
-  height: 50px;
-}
-
-audio::-webkit-media-controls-panel {
-  -webkit-justify-content: center;
-  height: 50px;
-}
 
 
-audio::-webkit-media-controls-timeline {
-  display: none !important;
-}
 
 
-audio::-webkit-media-controls-current-time-display {
-  display: none;
-}
-audio::-webkit-media-controls-time-remaining-display {
-  display: none;
-}
+/* Styles for Music Player */
+.player-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 15px 10px 25px rgba(0, 0, 0, 0.2);
+            width: max-content;
+            height: max-content;
+            margin: 0 800px 0 0;
+            rotate: -50deg;
+        }
+        h1 {
+            font-size: 28px;
+            color: #d62828;
+        }
+        h2 {
+            color: #6a040f;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 10px 5px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #f77f00;
+            border: none;
+            color: white;
+        }
+        button:hover {
+            background-color: #d62828;
+        }
+        input[type="range"] {
+            width: 80%;
+            margin: 0px 0px 0px 10px;
+        }
+        input[type="file"] {
+            margin-top: 20px;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #eee;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress {
+            height: 10px;
+            background-color: #d62828;
+            width: 0;
+        }
+
+
+
+
     </style>
 </head>
 <body onload="move('element')">
     <div id="preloader"></div>
     <div class="container">
 
-        <!-- <div class="element" style="background-color: #f8f3cd; z-index: 10; rotate: 1deg"><p class="notes" >Ispe kuch likhunga</p></div>
-        <div class="element" style="background-color: #f8f3cd; z-index: 9; rotate: 2deg"><p class="notes" >Ispe bhi</p></div>
-        <div class="element" style="background-color: #f8f3cd; z-index: 8; rotate: 1deg"><p class="notes" >Ispe bhi</p></div>
-        <div class="element" style="background-color: #f8f3cd; z-index: 7; rotate: 2deg"><p class="notes" >Ispe bhi</p></div>
-        <div class="element" style="background-color: #f8f3cd; z-index: 6; rotate: 1deg"><p class="notes" >Ispe bhi</p></div>
-        <div class="element" style="background-color: #f8f3cd; z-index: 5; rotate: 2deg"><p class="notes" >Ispe bhi</p></div>
-        <div class="element" style="background-color: #f8f3cd; z-index: 4; rotate: 1deg"><p class="notes" >Ispe bhi</p></div> -->
 
         <div class="element" style="background-color: #f8f3cd; z-index: 10; rotate: 1deg"><p class="notes" >You're My Sunshine:<br>
             "Every day seeing you feels like a beautiful day. You bring so much light and warmth into my life, and I can't imagine a day without seeing you."</p></div>
-        <div class="element" style="background-color: #f8f3cd; z-index: 9; rotate: 2deg"><p class="notes" >My Safe Haven: <br>
+        <div class="element" style="background-color: #f8f3cd; z-index: 9; rotate: 3deg"><p class="notes" >My Safe Haven: <br>
             "Talking to you, I feel safe, loved, and cherished. You’re my peace in a chaotic world, and I'll be so grateful to have you by my side."</p></div>
         <div class="element" style="background-color: #f8f3cd; z-index: 8; rotate: 1deg"><p class="notes" >Endless Adventure:<br>
             "Life with you will be the greatest adventure I could ever ask for. I can't wait to explore the world with you, hand in hand." </p></div>
-        <div class="element" style="background-color: #f8f3cd; z-index: 7; rotate: 2deg"><p class="notes" >Your Smile, My Favorite Sight:<br> 
+        <div class="element" style="background-color: #f8f3cd; z-index: 7; rotate: 3deg"><p class="notes" >Your Smile, My Favorite Sight:<br> 
             "Your smile is my favorite thing in the world. It brightens up my darkest days and makes everything seem possible."</p></div>
         <div class="element" style="background-color: #f8f3cd; z-index: 6; rotate: 1deg"><p class="notes" >Always on My Mind:<br>
             "No matter where I am or what I'm doing, thoughts of you always find their way into my mind. You make my heart race in the best way."</p></div>
-        <div class="element" style="background-color: #f8f3cd; z-index: 5; rotate: 2deg"><p class="notes" >Perfectly Imperfect:<br>
+        <div class="element" style="background-color: #f8f3cd; z-index: 5; rotate: 3deg"><p class="notes" >Perfectly Imperfect:<br>
             "You are perfect in all your imperfections, and I wouldn’t change a single thing about you. I love you just the way you are."</p></div>
         <div class="element" style="background-color: #f8f3cd; z-index: 4; rotate: 1deg"><p class="notes" >My Greatest Gift:<br>
             "Out of everything in life, you are the greatest gift I’ve ever received. Loving you is the best decision I've ever made."</p></div>
-        <div class="element" style="background-color: #f8f3cd; z-index: 3; rotate: 2deg"><p class="notes" >Thank You for Being You:<br>
+        <div class="element" style="background-color: #f8f3cd; z-index: 3; rotate: 3deg"><p class="notes" >Thank You for Being You:<br>
             "Thank you for being your amazing self. Your kindness, strength, and beauty inspire me every day to be a better person."</p></div>
         <div class="element" style="background-color: #f8f3cd; z-index: 2; rotate: 1deg"><p class="notes" >Forever Yours:<br>
             "I promise to love, cherish, and stand by you through all the ups and downs. My heart is yours now and forever."</p></div>
-        <div class="element" style="background-color: #f8f3cd; z-index: 1; rotate: 2deg"><p class="notes" >You Complete Me:<br>
+        <div class="element" style="background-color: #f8f3cd; z-index: 1; rotate: 3deg"><p class="notes" >You Complete Me:<br>
             "Before you, I didn't realize something was missing. Now, I know it was you all along. You complete me in ways I never thought possible."</p></div>
         <div class="element" style="background-color: #f8f3cd; z-index: 0; rotate: 1deg"><p class="notes" >Hey Girl, I Love you with all my heart</p><p style="font-size: xxx-large; margin-left: 40%;">&#10084</p></div>
 
-        <audio id="song" controls autoplay style="margin: 400px -320px 0px 994px; rotate: 15deg; border-radius: 25px; box-shadow: 2px 2px 2px #bcb07f;">
+        <!-- <audio id="song" controls autoplay style="margin: 400px -320px 0px 994px; rotate: 15deg; border-radius: 25px; box-shadow: 2px 2px 2px #bcb07f;">
             <source  volume="10" src="./src/Song.mp3" type="audio/mpeg">
-        </audio>
+        </audio> -->
        
 
+
+ <!-- Music Player -->
+ <div class="player-container">
+    <!-- <h2>Some Music<i class="fa fa-music"></i> ?</h2> -->
+    <label style="font-family: monospace;" for="volume-slider">Playing Favourites...&#10084;&#127925;&#127926;</label>
+    <select style="display: contents;" id="playlist" onchange="loadSelectedSong()">
+        <!-- <option value="">Select from Playlist</option> -->
+        <option value="src/song1.mp3">This one</option>
+        <option value="src/song2.mp3">Or this one</option>
+        <option value="src/song3.mp3">May be this one</option>
+    </select>
+    <!-- <input type="file" id="file-input" accept="audio/*" onchange="loadSongFromFile(this.files)"> -->
+    <div class="progress-bar">
+        <div id="progress" class="progress"></div>
     </div>
-        
-    <footer class="footer"><p>Made with <a style="color: red;">&#10084<a></p></footer>
+    <!-- <audio id="audio-player" controls>
+        Your browser does not support the audio element.
+    </audio> -->
+    <audio id="audio-player" controls style="display: contents;" >
+        <source  volume="10" src="./src/song1.mp3" type="audio/mpeg">
+    </audio>
+    <div>
+        <button onclick="playSong()"><i class="fa fa-play" aria-hidden="true"></i></button>
+        <button onclick="pauseSong()"><i class="fa fa-pause" aria-hidden="true"></i></button>
+        <button onclick="toggleLoop()"><i class="fa fa-repeat" aria-hidden="true"></i></button>
+        <button onclick="shufflePlaylist()"><i class="fa fa-random" aria-hidden="true"></i></button>
+    </div>
+    <div><i style="font-size: x-large;" class="fa fa-volume-off" aria-hidden="true"></i><input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1" oninput="setVolume(this.value)"></div>
+    
+</div>
+</div>
+    <footer class="footer"><p>Made with <a style="color: red;">&#10084<a></p>
+    </footer><p style="position: absolute; color: #d2d2d4; margin-left: 10px;">&copy; Niraj Pandav</p>	
         <iframe width="0" height="0" src="https://www.youtube.com/embed/LjhCEhWiKXk?si=sbC0T4HYa90v34Ng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <iframe width="0" height="0" src="https://www.youtube.com/embed/LjhCEhWiKXk?si=sbC0T4HYa90v34Ng" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         
@@ -164,5 +225,69 @@ audio::-webkit-media-controls-time-remaining-display {
             loader.style.display = "none";
         })
     </script>
+
+
+<script>
+    const audioPlayer = document.getElementById('audio-player');
+    const songTitle = document.getElementById('song-title');
+    const progress = document.getElementById('progress');
+    let isLooping = false;
+    // Play and Pause functionality
+    function playSong() {
+        audioPlayer.play();
+    }
+    function pauseSong() {
+        audioPlayer.pause();
+    }
+    
+    // Load song from file input
+    function loadSongFromFile(files) {
+        if (files.length > 0) {
+            const file = files[0];
+            const url = URL.createObjectURL(file);
+            audioPlayer.src = url;
+            songTitle.innerText = file.name; // Display the song's name
+        }
+    }
+    // Load song from playlist
+    function loadSelectedSong() {
+        const playlist = document.getElementById('playlist');
+        const selectedSong = playlist.value;
+        if (selectedSong) {
+            audioPlayer.src = selectedSong;
+            songTitle.innerText = playlist.options[playlist.selectedIndex].text; // Display selected song's name
+        }
+    }
+    // Volume control
+    function setVolume(value) {
+        audioPlayer.volume = value;
+    }
+    // Loop functionality
+    function toggleLoop() {
+        isLooping = !isLooping;
+        audioPlayer.loop = isLooping;
+        alert(isLooping ? "Loop enabled" : "Loop disabled");
+    }
+    // Shuffle playlist functionality
+    function shufflePlaylist() {
+        const playlist = document.getElementById('playlist');
+        const options = Array.from(playlist.options).slice(1); // Exclude the first option (placeholder)
+        // Randomly shuffle options
+        for (let i = options.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [options[i], options[j]] = [options[j], options[i]];
+        }
+        // Reset playlist and load the first song from the shuffled list
+        playlist.innerHTML = '<option value="">Select from Playlist</option>';
+        options.forEach(option => playlist.appendChild(option));
+        playlist.selectedIndex = 1;
+        loadSelectedSong();
+    }
+    // Update progress bar as song plays
+    audioPlayer.addEventListener('timeupdate', () => {
+        const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progress.style.width = `${progressPercent}%`;
+    });
+</script>
 </body>
 </html>
