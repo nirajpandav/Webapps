@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7e4e4;
+            margin-top: 50px;
+        }
+        .player-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 28px;
+            color: #d62828;
+        }
+        h2 {
+            color: #6a040f;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 10px 5px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            background-color: #f77f00;
+            border: none;
+            color: white;
+        }
+        button:hover {
+            background-color: #d62828;
+        }
+        input[type="range"] {
+            width: 100%;
+            margin: 10px 0;
+        }
+        input[type="file"] {
+            margin-top: 20px;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #eee;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        .progress {
+            height: 10px;
+            background-color: #d62828;
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Player</h1>
+    <div class="player-container">
+        <h2 id="song-title">Select a Song</h2>
+        <div class="progress-bar">
+            <div id="progress" class="progress"></div>
+        </div>
+        <audio id="audio-player" controls>
+            Your browser does not support the audio element.
+        </audio>
+        <div>
+            <button onclick="playSong()">Play</button>
+            <button onclick="pauseSong()">Pause</button>
+            <button onclick="toggleLoop()">Loop</button>
+            <button onclick="shufflePlaylist()">Shuffle</button>
+        </div>
+        <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1" oninput="setVolume(this.value)">
+        <label for="volume-slider">Volume</label>
+        <select id="playlist" onchange="loadSelectedSong()">
+            <option value="">Select from Playlist</option>
+            <option value="song1.mp3">Song 1 - [Romantic Track]</option>
+            <option value="song2.mp3">Song 2 - [Special Memory]</option>
+            <option value="song3.mp3">Song 3 - [Favorite Song]</option>
+        </select>
+        <input type="file" id="file-input" accept="audio/*" onchange="loadSongFromFile(this.files)">
+    </div>
+    <script>
+        const audioPlayer = document.getElementById('audio-player');
+        const songTitle = document.getElementById('song-title');
+        const progress = document.getElementById('progress');
+        let isLooping = false;
+        // Play and Pause functionality
+        function playSong() {
+            audioPlayer.play();
+        }
+        function pauseSong() {
+            audioPlayer.pause();
+        }
+        // Load song from file input
+        function loadSongFromFile(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                const url = URL.createObjectURL(file);
+                audioPlayer.src = url;
+                songTitle.innerText = file.name; // Display the song's name
+            }
+        }
+        // Load song from playlist
+        function loadSelectedSong() {
+            const playlist = document.getElementById('playlist');
+            const selectedSong = playlist.value;
+            if (selectedSong) {
+                audioPlayer.src = selectedSong;
+                songTitle.innerText = playlist.options[playlist.selectedIndex].text; // Display selected song's name
+            }
+        }
+        // Volume control
+        function setVolume(value) {
+            audioPlayer.volume = value;
+        }
+        // Loop functionality
+        function toggleLoop() {
+            isLooping = !isLooping;
+            audioPlayer.loop = isLooping;
+            alert(isLooping ? "Loop enabled" : "Loop disabled");
+        }
+        // Shuffle playlist functionality
+        function shufflePlaylist() {
+            const playlist = document.getElementById('playlist');
+            const options = Array.from(playlist.options).slice(1); // Exclude the first option (placeholder)
+            // Randomly shuffle options
+            for (let i = options.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [options[i], options[j]] = [options[j], options[i]];
+            }
+            // Reset playlist and load the first song from the shuffled list
+            playlist.innerHTML = '<option value="">Select from Playlist</option>';
+            options.forEach(option => playlist.appendChild(option));
+            playlist.selectedIndex = 1;
+            loadSelectedSong();
+        }
+        // Update progress bar as song plays
+        audioPlayer.addEventListener('timeupdate', () => {
+            const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            progress.style.width = `${progressPercent}%`;
+        });
+    </script>
+</body>
+</html>

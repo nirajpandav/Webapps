@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Music Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 18px;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Want to listen to the melody of your name?</h1>
+    <label for="name">Enter your name:</label><br>
+    <input type="text" id="name" placeholder="Enter your name"><br>
+    <button onclick="generateMusic()">Play Melody</button>
+    <div id="message"></div>
+    <script>
+        function generateMusic() {
+            const name = document.getElementById('name').value;
+            if (!name) {
+                document.getElementById('message').innerHTML = "Please enter your name!";
+                return;
+            }
+            const context = new (window.AudioContext || window.webkitAudioContext)();
+            // Notes frequencies for a simple scale (C major)
+            const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25]; // C4 to C5
+            let startTime = context.currentTime;
+            // Generate a melody based on her name
+            for (let i = 0; i < name.length; i++) {
+                const oscillator = context.createOscillator();
+                const gainNode = context.createGain();
+                // Map each character to a note in the scale using ASCII value
+                const charCode = name.charCodeAt(i);
+                const noteIndex = charCode % notes.length; // Get a valid index for the notes array
+                const noteFrequency = notes[noteIndex];
+                // Set frequency and waveform type
+                oscillator.frequency.value = noteFrequency;
+                oscillator.type = 'square'; // You can change this to 'square', 'triangle', or 'sawtooth'
+                // Connect oscillator to gainNode and gainNode to audio context
+                oscillator.connect(gainNode);
+                gainNode.connect(context.destination);
+                // Set envelope (volume fade in/out)
+                gainNode.gain.setValueAtTime(0, startTime);
+                gainNode.gain.linearRampToValueAtTime(0.5, startTime + 0.05);
+                gainNode.gain.linearRampToValueAtTime(0, startTime + 0.5);
+                // Start oscillator and stop it after 0.5 seconds
+                oscillator.start(startTime);
+                oscillator.stop(startTime + 0.1);
+                // Increment startTime for the next note
+                startTime += 0.55;
+            }
+            document.getElementById('message').innerHTML = `Playing a melody for ${name}!`;
+        }
+    </script>
+</body>
+</html>
